@@ -51,6 +51,7 @@ namespace Twitch_Viewer
                 loginwindow.Show();
                 loginwindow.Activate();
                 loginwindow.Topmost = true;
+                //test git
             }
             else
             {
