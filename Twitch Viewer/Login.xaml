@@ -1,0 +1,28 @@
+﻿<Window x:Class="Twitch_Viewer.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Twitch_Viewer"
+        mc:Ignorable="d"
+        Title="Login" Height="250" Width="300">
+    <StackPanel>
+        <StackPanel Margin="0,30,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Username: "></Label>
+            <TextBox x:Name="usernameBox" Width="200" Height="20" />            
+        </StackPanel>
+        <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content=" Token:       "></Label>
+            <TextBox x:Name="tokenBox" Width="200" Height="20" />
+        </StackPanel>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Hyperlink NavigateUri="https://twitchtokengenerator.com/" RequestNavigate="Hyperlink_RequestNavigate" >Token generator</Hyperlink>
+        </TextBlock>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0"> Click on the link, authorize access to Twitch,</TextBlock>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0">check Yes for "user_follows_edit".</TextBlock>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0">Generate the token then copy it above.</TextBlock>
+        <Button x:Name="logintry" Content="Enregistrer" Width="80" Margin="0,10,0,0" Click="logintry_Click"/>
+
+
+    </StackPanel>
+</Window>

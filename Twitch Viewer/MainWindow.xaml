@@ -1,0 +1,94 @@
+﻿<Window x:Class="Twitch_Viewer.MainWindow" Activated="Window_Activated"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Twitch_Viewer"
+        mc:Ignorable="d"
+        Title="Twitch Viewer" Height="530" Width="910">
+    <DockPanel LastChildFill="False">
+        <Menu DockPanel.Dock="Top" Height="22">
+            <MenuItem Header="_Options" VerticalAlignment="Center">
+                <MenuItem x:Name="checkChat" Header="_Activer chat" IsCheckable="true" />
+                <MenuItem x:Name="loginmenu" Header="Login" Click="loginmenu_Click" />
+                <MenuItem x:Name="streamOptions" Header="Option stream" Click="streamOptions_Click" />
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="status_bar" >Idle</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl DockPanel.Dock="Top" x:Name="tabmain" Margin="8,8,8,8">
+            <TabItem x:Name="streamsmain" Header="Streams">
+                <Grid>
+                    <ListView x:Name="liststreams" HorizontalAlignment="Left" Margin="8,51,8,8" VerticalAlignment="Top" MouseDoubleClick="liststreams_MouseDoubleClick" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}"  >
+                                <Setter Property="Height" Value="23" />
+                                <Setter Property="BorderThickness" Value="0.5"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View >
+                            <GridView>
+                                <GridViewColumn Header="Streamer" Width="150" >
+                                    <GridViewColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Status" Width="600" DisplayMemberBinding= "{Binding Status}"/>
+                                <GridViewColumn Header="Viewers" Width ="100" DisplayMemberBinding="{Binding Viewers}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Margin="8" Orientation="Horizontal" Height="35" VerticalAlignment="Top">
+                        <ComboBox x:Name="listgames" HorizontalAlignment="Left" Height="25" Width="450" VerticalAlignment="Center" SelectionChanged="listgames_SelectionChanged"/>
+                        <Button x:Name="refresh" Content="&#xe117;" Margin ="10,0,0,0" FontFamily="Segoe UI Symbol" FontSize="10"  VerticalAlignment="Center" Height="25" Width="30"  Click="refresh_Click"/>
+                        <Button x:Name="follow" Content="Follow channel" Margin ="275,0,0,0" FontFamily="Segoe UI Symbol" FontSize="10"  VerticalAlignment="Center" Height="25" Width="90"  Click="follow_Click"/>
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Followed">
+                <Grid>
+                    <ListView x:Name="listfollow"  Margin="8,51,8,8"  MouseDoubleClick="listfollow_MouseDoubleClick">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Height" Value="23" />
+                                <Setter Property="BorderThickness" Value="0.5"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Streamer" Width="130">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Jeu" Width="220" DisplayMemberBinding="{Binding Game}"/>
+                                <GridViewColumn Header="Status" Width="410" DisplayMemberBinding="{Binding Status}"/>
+                                <GridViewColumn Header="Viewers" Width ="85" DisplayMemberBinding="{Binding Viewers}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Margin="8" Orientation="Horizontal" Height="35" VerticalAlignment="Top">
+                        <Button x:Name="refreshfollows" Content="&#xe117;" Margin ="10,0,0,0" FontFamily="Segoe UI Symbol" FontSize="10"  VerticalAlignment="Center" Height="25" Width="30"  Click="refreshfollows_Click"/>
+                        <Button x:Name="unfollow" Content="Unfollow channel" Margin ="725,0,0,0" FontFamily="Segoe UI Symbol" FontSize="10"  VerticalAlignment="Center" Height="25" Width="90"  Click="unfollow_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
+    </DockPanel>
+    
+
+</Window>
