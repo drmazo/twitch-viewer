@@ -229,7 +229,7 @@ namespace Twitch_Viewer
         private void LaunchStream(string url)
         {
             var sb = new StringBuilder();
-            
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
             startInfo.FileName = "cmd.exe";
@@ -238,6 +238,9 @@ namespace Twitch_Viewer
             startInfo.RedirectStandardOutput = true;
             startInfo.RedirectStandardError = true;
             startInfo.CreateNoWindow = true;
+            process.StartInfo = startInfo;
+
+            process.Start();
 
             if (checkChat.IsChecked == true)
             {
